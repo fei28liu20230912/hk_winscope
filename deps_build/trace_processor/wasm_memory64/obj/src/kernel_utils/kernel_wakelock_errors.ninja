@@ -1,0 +1,7 @@
+defines = -DNDEBUG
+include_dirs =
+root_out_dir = wasm_memory64
+target_output_name = kernel_wakelock_errors
+
+
+build wasm_memory64/obj/src/kernel_utils/kernel_wakelock_errors.stamp: wasm_memory64_stamp

@@ -1,0 +1,16 @@
+defines = -DNDEBUG -DPERFETTO_IMPLEMENTATION
+include_dirs = -I../buildtools/llvm-project/llvm/include -I.. -I../src/profiling/memory/include -I../include -Iwasm_memory64/gen/build_config -Iwasm_memory64/gen
+cflags = -fstrict-aliasing -Wformat -Werror -fcolor-diagnostics -fdiagnostics-show-template-tree -fno-omit-frame-pointer -msimd128 -s MEMORY64=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -fvisibility=hidden -O3 -fdata-sections -ffunction-sections
+cflags_cc = -fno-exceptions -fno-rtti -std=c++17
+root_out_dir = wasm_memory64
+target_output_name = llvm_demangle
+
+build wasm_memory64/obj/buildtools/llvm_demangle.inputdeps.stamp: wasm_memory64_stamp wasm_memory64/obj/gn/gen_buildflags.stamp wasm_memory64/obj/gn/standalone/check_build_deps.stamp
+build wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.DLangDemangle.o: wasm_memory64_cxx ../buildtools/llvm-project/llvm/lib/Demangle/DLangDemangle.cpp || wasm_memory64/obj/buildtools/llvm_demangle.inputdeps.stamp
+build wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.Demangle.o: wasm_memory64_cxx ../buildtools/llvm-project/llvm/lib/Demangle/Demangle.cpp || wasm_memory64/obj/buildtools/llvm_demangle.inputdeps.stamp
+build wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.ItaniumDemangle.o: wasm_memory64_cxx ../buildtools/llvm-project/llvm/lib/Demangle/ItaniumDemangle.cpp || wasm_memory64/obj/buildtools/llvm_demangle.inputdeps.stamp
+build wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.MicrosoftDemangle.o: wasm_memory64_cxx ../buildtools/llvm-project/llvm/lib/Demangle/MicrosoftDemangle.cpp || wasm_memory64/obj/buildtools/llvm_demangle.inputdeps.stamp
+build wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.MicrosoftDemangleNodes.o: wasm_memory64_cxx ../buildtools/llvm-project/llvm/lib/Demangle/MicrosoftDemangleNodes.cpp || wasm_memory64/obj/buildtools/llvm_demangle.inputdeps.stamp
+build wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.RustDemangle.o: wasm_memory64_cxx ../buildtools/llvm-project/llvm/lib/Demangle/RustDemangle.cpp || wasm_memory64/obj/buildtools/llvm_demangle.inputdeps.stamp
+
+build wasm_memory64/obj/buildtools/llvm_demangle.stamp: wasm_memory64_stamp wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.DLangDemangle.o wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.Demangle.o wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.ItaniumDemangle.o wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.MicrosoftDemangle.o wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.MicrosoftDemangleNodes.o wasm_memory64/obj/buildtools/llvm-project/llvm/lib/Demangle/llvm_demangle.RustDemangle.o || wasm_memory64/obj/gn/default_deps.stamp

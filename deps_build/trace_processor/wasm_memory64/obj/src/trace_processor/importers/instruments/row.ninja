@@ -1,0 +1,7 @@
+defines = -DNDEBUG -DPERFETTO_IMPLEMENTATION
+include_dirs = -I.. -I../src/profiling/memory/include -I../include -Iwasm_memory64/gen/build_config -Iwasm_memory64/gen
+root_out_dir = wasm_memory64
+target_output_name = row
+
+
+build wasm_memory64/obj/src/trace_processor/importers/instruments/row.stamp: wasm_memory64_stamp || wasm_memory64/obj/gn/default_deps.stamp wasm_memory64/obj/src/trace_processor/containers/containers.stamp wasm_memory64/obj/src/trace_processor/util/build_id.stamp wasm_memory64/obj/include/perfetto/protozero/protozero.stamp wasm_memory64/obj/include/perfetto/base/base.stamp wasm_memory64/obj/include/perfetto/public/base.stamp wasm_memory64/obj/include/perfetto/public/abi/base.stamp wasm_memory64/obj/include/perfetto/public/protozero.stamp wasm_memory64/obj/protos/perfetto/trace_processor/zero.stamp wasm_memory64/obj/protos/perfetto/common/zero.stamp wasm_memory64/obj/src/protozero/protozero.stamp wasm_memory64/obj/src/base/base.stamp wasm_memory64/obj/include/perfetto/ext/base/base.stamp wasm_memory64/obj/src/base/perfetto_base_default_platform.stamp wasm_memory64/obj/protos/perfetto/perfetto_sql/zero.stamp wasm_memory64/obj/protos/perfetto/trace_summary/zero.stamp

@@ -1,0 +1,12 @@
+defines = -DNDEBUG -DPERFETTO_IMPLEMENTATION
+include_dirs = -I../buildtools/sqlite -I.. -I../src/profiling/memory/include -I../include -Iwasm_memory64/gen/build_config -Iwasm_memory64/gen
+cflags = -fstrict-aliasing -Wformat -Werror -fcolor-diagnostics -fdiagnostics-show-template-tree -fno-omit-frame-pointer -msimd128 -s MEMORY64=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -fvisibility=hidden -O3 -fdata-sections -ffunction-sections -DSQLITE_THREADSAFE=0 -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_OMIT_DEPRECATED -DSQLITE_OMIT_SHARED_CACHE -DHAVE_USLEEP -DHAVE_UTIME -DSQLITE_BYTEORDER=1234 -DSQLITE_DEFAULT_AUTOVACUUM=0 -DSQLITE_DEFAULT_MMAP_SIZE=0 -DSQLITE_CORE -DSQLITE_TEMP_STORE=3 -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_OMIT_RANDOMNESS -DSQLITE_OMIT_AUTOINIT -DSQLITE_ENABLE_JSON1
+cflags_c =
+root_out_dir = wasm_memory64
+target_output_name = sqlite
+
+build wasm_memory64/obj/buildtools/sqlite.inputdeps.stamp: wasm_memory64_stamp wasm_memory64/obj/gn/gen_buildflags.stamp wasm_memory64/obj/gn/standalone/check_build_deps.stamp
+build wasm_memory64/obj/buildtools/sqlite/sqlite.sqlite3.o: wasm_memory64_cc ../buildtools/sqlite/sqlite3.c || wasm_memory64/obj/buildtools/sqlite.inputdeps.stamp
+build wasm_memory64/obj/buildtools/sqlite_src/ext/misc/sqlite.percentile.o: wasm_memory64_cc ../buildtools/sqlite_src/ext/misc/percentile.c || wasm_memory64/obj/buildtools/sqlite.inputdeps.stamp
+
+build wasm_memory64/obj/buildtools/sqlite.stamp: wasm_memory64_stamp wasm_memory64/obj/buildtools/sqlite/sqlite.sqlite3.o wasm_memory64/obj/buildtools/sqlite_src/ext/misc/sqlite.percentile.o || wasm_memory64/obj/gn/default_deps.stamp

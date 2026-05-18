@@ -1,0 +1,11 @@
+defines = -DNDEBUG -DPERFETTO_IMPLEMENTATION
+include_dirs = -Iwasm_memory64/gen -I.. -I../src/profiling/memory/include -I../include -Iwasm_memory64/gen/build_config
+cflags = -fstrict-aliasing -Wformat -Werror -fcolor-diagnostics -fdiagnostics-show-template-tree -fno-omit-frame-pointer -msimd128 -s MEMORY64=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -fvisibility=hidden -O3 -fdata-sections -ffunction-sections
+cflags_cc = -fno-exceptions -fno-rtti -std=c++17
+root_out_dir = wasm_memory64
+target_output_name = zero
+
+build wasm_memory64/obj/protos/perfetto/config/interceptors/zero.inputdeps.stamp: wasm_memory64_stamp wasm_memory64/obj/gn/gen_buildflags.stamp wasm_memory64/obj/gn/standalone/check_build_deps.stamp wasm_memory64/obj/protos/perfetto/common/zero_gen.stamp wasm_memory64/obj/protos/perfetto/config/interceptors/zero_gen.stamp
+build wasm_memory64/obj/trace_processor_build/wasm_memory64/gen/protos/perfetto/config/interceptors/zero.console_config.pbzero.o: wasm_memory64_cxx wasm_memory64/gen/protos/perfetto/config/interceptors/console_config.pbzero.cc || wasm_memory64/obj/protos/perfetto/config/interceptors/zero.inputdeps.stamp
+
+build wasm_memory64/obj/protos/perfetto/config/interceptors/zero.stamp: wasm_memory64_stamp wasm_memory64/obj/trace_processor_build/wasm_memory64/gen/protos/perfetto/config/interceptors/zero.console_config.pbzero.o || wasm_memory64/obj/protos/perfetto/config/interceptors/zero_gen.stamp wasm_memory64/obj/protos/perfetto/common/zero.stamp wasm_memory64/obj/src/protozero/protozero.stamp wasm_memory64/obj/include/perfetto/base/base.stamp wasm_memory64/obj/include/perfetto/public/base.stamp wasm_memory64/obj/include/perfetto/public/abi/base.stamp wasm_memory64/obj/include/perfetto/protozero/protozero.stamp wasm_memory64/obj/include/perfetto/public/protozero.stamp wasm_memory64/obj/src/base/base.stamp wasm_memory64/obj/include/perfetto/ext/base/base.stamp wasm_memory64/obj/src/base/perfetto_base_default_platform.stamp

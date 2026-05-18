@@ -1,0 +1,8 @@
+defines = -DNDEBUG -DPERFETTO_IMPLEMENTATION
+include_dirs = -I.. -I../src/profiling/memory/include -I../include -Iwasm_memory64/gen/build_config -Iwasm_memory64/gen -I../buildtools/sqlite
+root_out_dir = wasm_memory64
+target_output_name = bindings
+
+build wasm_memory64/obj/src/trace_processor/sqlite/bindings/bindings.inputdeps.stamp: wasm_memory64_stamp wasm_memory64/obj/gn/gen_buildflags.stamp wasm_memory64/obj/gn/standalone/check_build_deps.stamp
+
+build wasm_memory64/obj/src/trace_processor/sqlite/bindings/bindings.stamp: wasm_memory64_stamp || wasm_memory64/obj/gn/default_deps.stamp wasm_memory64/obj/gn/sqlite.stamp wasm_memory64/obj/src/base/base.stamp wasm_memory64/obj/buildtools/sqlite.stamp wasm_memory64/obj/include/perfetto/base/base.stamp wasm_memory64/obj/include/perfetto/public/base.stamp wasm_memory64/obj/include/perfetto/public/abi/base.stamp wasm_memory64/obj/include/perfetto/ext/base/base.stamp wasm_memory64/obj/src/base/perfetto_base_default_platform.stamp

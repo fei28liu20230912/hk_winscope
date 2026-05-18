@@ -1,0 +1,7 @@
+defines = -DNDEBUG
+include_dirs =
+root_out_dir = wasm_memory64
+target_output_name = protos
+
+
+build wasm_memory64/obj/include/perfetto/public/protos/protos.stamp: wasm_memory64_stamp

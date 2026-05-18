@@ -1,0 +1,7 @@
+defines = -DNDEBUG
+include_dirs =
+root_out_dir = wasm_memory64
+target_output_name = stdlib
+
+
+build wasm_memory64/obj/src/trace_processor/util/stdlib.stamp: wasm_memory64_stamp

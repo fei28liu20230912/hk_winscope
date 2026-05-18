@@ -1,0 +1,7 @@
+defines = -DNDEBUG -DPERFETTO_IMPLEMENTATION
+include_dirs = -I.. -I../src/profiling/memory/include -I../include -Iwasm_memory64/gen/build_config -Iwasm_memory64/gen
+root_out_dir = wasm_memory64
+target_output_name = util
+
+
+build wasm_memory64/obj/src/trace_processor/util/util.stamp: wasm_memory64_stamp || wasm_memory64/obj/gn/default_deps.stamp wasm_memory64/obj/include/perfetto/trace_processor/basic_types.stamp wasm_memory64/obj/include/perfetto/base/base.stamp wasm_memory64/obj/include/perfetto/public/base.stamp wasm_memory64/obj/include/perfetto/public/abi/base.stamp

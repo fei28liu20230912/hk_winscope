@@ -1,0 +1,13 @@
+defines = -DNDEBUG -DPERFETTO_IMPLEMENTATION
+include_dirs = -I.. -I../src/profiling/memory/include -I../include -Iwasm_memory64/gen/build_config -Iwasm_memory64/gen
+cflags = -fstrict-aliasing -Wformat -Werror -fcolor-diagnostics -fdiagnostics-show-template-tree -fno-omit-frame-pointer -msimd128 -s MEMORY64=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -fvisibility=hidden -O3 -fdata-sections -ffunction-sections -DJSON_USE_EXCEPTION=0 -isystem ../buildtools/jsoncpp/include -Wno-deprecated-declarations
+cflags_cc = -fno-exceptions -fno-rtti -std=c++17
+root_out_dir = wasm_memory64
+target_output_name = jsoncpp
+
+build wasm_memory64/obj/buildtools/jsoncpp.inputdeps.stamp: wasm_memory64_stamp wasm_memory64/obj/gn/gen_buildflags.stamp wasm_memory64/obj/gn/standalone/check_build_deps.stamp
+build wasm_memory64/obj/buildtools/jsoncpp/src/lib_json/jsoncpp.json_reader.o: wasm_memory64_cxx ../buildtools/jsoncpp/src/lib_json/json_reader.cpp || wasm_memory64/obj/buildtools/jsoncpp.inputdeps.stamp
+build wasm_memory64/obj/buildtools/jsoncpp/src/lib_json/jsoncpp.json_value.o: wasm_memory64_cxx ../buildtools/jsoncpp/src/lib_json/json_value.cpp || wasm_memory64/obj/buildtools/jsoncpp.inputdeps.stamp
+build wasm_memory64/obj/buildtools/jsoncpp/src/lib_json/jsoncpp.json_writer.o: wasm_memory64_cxx ../buildtools/jsoncpp/src/lib_json/json_writer.cpp || wasm_memory64/obj/buildtools/jsoncpp.inputdeps.stamp
+
+build wasm_memory64/obj/buildtools/jsoncpp.stamp: wasm_memory64_stamp wasm_memory64/obj/buildtools/jsoncpp/src/lib_json/jsoncpp.json_reader.o wasm_memory64/obj/buildtools/jsoncpp/src/lib_json/jsoncpp.json_value.o wasm_memory64/obj/buildtools/jsoncpp/src/lib_json/jsoncpp.json_writer.o || wasm_memory64/obj/gn/default_deps.stamp

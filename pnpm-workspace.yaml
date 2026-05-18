@@ -1,0 +1,7 @@
+allowBuilds:
+  '@parcel/watcher': false
+  browser-tabs-lock: false
+  core-js: false
+  esbuild: false
+  nice-napi: false
+  protobufjs: false

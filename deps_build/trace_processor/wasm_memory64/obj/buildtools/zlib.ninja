@@ -1,0 +1,26 @@
+defines = -DNDEBUG -DZLIB_IMPLEMENTATION -DCHROMIUM_ZLIB_NO_CHROMECONF -DPERFETTO_IMPLEMENTATION
+include_dirs = -I.. -I../src/profiling/memory/include -I../include -Iwasm_memory64/gen/build_config -Iwasm_memory64/gen
+cflags = -fstrict-aliasing -Wformat -Werror -fcolor-diagnostics -fdiagnostics-show-template-tree -fno-omit-frame-pointer -msimd128 -s MEMORY64=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -fvisibility=hidden -O3 -fdata-sections -ffunction-sections -isystem ../buildtools/zlib -Wno-unknown-warning-option -Wno-deprecated-non-prototype -Wno-macro-redefined
+cflags_c =
+root_out_dir = wasm_memory64
+target_output_name = zlib
+
+build wasm_memory64/obj/buildtools/zlib.inputdeps.stamp: wasm_memory64_stamp wasm_memory64/obj/gn/gen_buildflags.stamp wasm_memory64/obj/gn/standalone/check_build_deps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.adler32.o: wasm_memory64_cc ../buildtools/zlib/adler32.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.compress.o: wasm_memory64_cc ../buildtools/zlib/compress.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.cpu_features.o: wasm_memory64_cc ../buildtools/zlib/cpu_features.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.crc32.o: wasm_memory64_cc ../buildtools/zlib/crc32.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.deflate.o: wasm_memory64_cc ../buildtools/zlib/deflate.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.gzclose.o: wasm_memory64_cc ../buildtools/zlib/gzclose.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.gzlib.o: wasm_memory64_cc ../buildtools/zlib/gzlib.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.gzread.o: wasm_memory64_cc ../buildtools/zlib/gzread.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.gzwrite.o: wasm_memory64_cc ../buildtools/zlib/gzwrite.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.infback.o: wasm_memory64_cc ../buildtools/zlib/infback.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.inffast.o: wasm_memory64_cc ../buildtools/zlib/inffast.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.inflate.o: wasm_memory64_cc ../buildtools/zlib/inflate.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.inftrees.o: wasm_memory64_cc ../buildtools/zlib/inftrees.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.trees.o: wasm_memory64_cc ../buildtools/zlib/trees.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.uncompr.o: wasm_memory64_cc ../buildtools/zlib/uncompr.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+build wasm_memory64/obj/buildtools/zlib/zlib.zutil.o: wasm_memory64_cc ../buildtools/zlib/zutil.c || wasm_memory64/obj/buildtools/zlib.inputdeps.stamp
+
+build wasm_memory64/obj/buildtools/zlib.stamp: wasm_memory64_stamp wasm_memory64/obj/buildtools/zlib/zlib.adler32.o wasm_memory64/obj/buildtools/zlib/zlib.compress.o wasm_memory64/obj/buildtools/zlib/zlib.cpu_features.o wasm_memory64/obj/buildtools/zlib/zlib.crc32.o wasm_memory64/obj/buildtools/zlib/zlib.deflate.o wasm_memory64/obj/buildtools/zlib/zlib.gzclose.o wasm_memory64/obj/buildtools/zlib/zlib.gzlib.o wasm_memory64/obj/buildtools/zlib/zlib.gzread.o wasm_memory64/obj/buildtools/zlib/zlib.gzwrite.o wasm_memory64/obj/buildtools/zlib/zlib.infback.o wasm_memory64/obj/buildtools/zlib/zlib.inffast.o wasm_memory64/obj/buildtools/zlib/zlib.inflate.o wasm_memory64/obj/buildtools/zlib/zlib.inftrees.o wasm_memory64/obj/buildtools/zlib/zlib.trees.o wasm_memory64/obj/buildtools/zlib/zlib.uncompr.o wasm_memory64/obj/buildtools/zlib/zlib.zutil.o || wasm_memory64/obj/gn/default_deps.stamp
